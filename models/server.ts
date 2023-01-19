@@ -2,7 +2,8 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import db from '../db/connection';
 
-import homRoutes from '../routes/home';
+import homeRoutes from '../routes/home';
+import webhookRoutes from '../routes/webhook';
 
 
 class Server {
@@ -10,7 +11,8 @@ class Server {
     private app:Application;
     private port:string;
     private apiPath = {
-        home: '/api/home'
+        home: '/api/home',
+        webhook: '/webhook'
     }
 
     
@@ -33,7 +35,8 @@ class Server {
 
 
     routes() {
-        this.app.use( this.apiPath.home, homRoutes );
+        this.app.use( this.apiPath.home,    homeRoutes );
+        this.app.use( this.apiPath.webhook, webhookRoutes );
     }
 
  
