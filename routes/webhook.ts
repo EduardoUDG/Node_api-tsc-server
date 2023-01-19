@@ -21,6 +21,10 @@ router.post('/', (req: Request, res: Response) => {
     agent.add(`Saludos desde el backend con typescript`);
   }
 
+  const buscandoDepartamentosCucei = (agent: any) =>  {
+    agent.add(`Saludos desde el backend con typescript`);
+  }
+
   let intentMap = new Map();
   intentMap.set('webhook_test', welcome);
 
