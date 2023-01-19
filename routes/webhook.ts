@@ -15,15 +15,14 @@ router.post('/', (req: Request, res: Response) => {
   // process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
   const agent = new WebhookClient({ request: req, response: res });
-  console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
-  console.log('Dialogflow Request body: ' + JSON.stringify(req.body));
+  console.log('INTENTO: ', agent.intent.trim() );
 
-  function welcome(agent: any) {
+  const welcome = (agent: any) =>  {
     agent.add(`Saludos desde el backend con typescript`);
   }
 
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcome);
+  intentMap.set('webhook_test', welcome);
 
   agent.handleRequest(intentMap);
 });
