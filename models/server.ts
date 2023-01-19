@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import db from '../db/connection';
 
-import userRoutes from '../routes/users';
+import homRoutes from '../routes/home';
 
 
 class Server {
@@ -10,7 +10,7 @@ class Server {
     private app:Application;
     private port:string;
     private apiPath = {
-        users: '/api/users'
+        home: '/api/home'
     }
 
     
@@ -18,20 +18,9 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8000';
 
-        this.dbConnection();
         this.middlewares();
         this.routes();
     }
-
-    async dbConnection() {
-        try {
-            await db.authenticate();
-            console.log('Data base online');
-        } catch (error:any) {
-            throw new Error(error);
-        }
-    }
-
 
     middlewares() {
         // CORS
@@ -44,7 +33,7 @@ class Server {
 
 
     routes() {
-        this.app.use( this.apiPath.users, userRoutes );
+        this.app.use( this.apiPath.home, homRoutes );
     }
 
  
