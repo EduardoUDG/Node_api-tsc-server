@@ -1,9 +1,8 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import db from '../db/connection';
 
-import homeRoutes from '../routes/home';
-import webhookRoutes from '../routes/webhook';
+import homeRoutes from './../routes/home';
+import webhookRoutes from './../routes/webhook';
 
 
 class Server {
